@@ -16,10 +16,12 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
+function dosyaAdiniBul(dosyaPath) {
   // kodlar buraya
+  const dosyaAdi = dosyaPath.split("/");
+  return dosyaAdi[dosyaAdi.length-1];
 }
-
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
 /*
   GÖREV 2
   - Input:  Bir sayı arrayini parametre olarak alacak bir fonksiyon oluştur.
@@ -37,10 +39,24 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek input:  [109, 216, 288, 143, 71, 185, -278, 194, 5]
   örnek output: 104
 */
-
-function ortalamaBul(/* kodlar buraya */) {
+const a = [109, 216, 288, 143, 71, 185, -278, 194, 5];
+function ortalamaBul(sayiArr) {
   // kodlar buraya
+  if(sayiArr.length === 0){
+    return null;
+  }else if(sayiArr.length === 1){
+    return sayiArr[0];
+  }else{
+    let toplam = 0;
+    for(let i in sayiArr){
+      toplam = toplam + sayiArr[i];
+    }
+    toplam = toplam / sayiArr.length;
+    //return Math.ceil(toplam) ;
+    return toplam;
+  }
 }
+console.log("görev-2 :" , ortalamaBul(a))
 
 /*
   GÖREV 3
@@ -62,9 +78,16 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
+function ortalamadanBuyukleriBul(arrSayi,callOrtalama) {
   // kodlar buraya
+  const ort = callOrtalama(arrSayi);
+  const sonuc = arrSayi.filter((buyukMu) => buyukMu>=ort);
+  if(sonuc.length === 0){
+    return null;
+  }
+  return sonuc;
 }
+console.log("görev-3 :" , ortalamadanBuyukleriBul(a,ortalamaBul));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
